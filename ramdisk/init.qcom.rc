@@ -22,7 +22,7 @@ on init
 
 on emmc-fs
     # mount mmc partitions
-    mount_all /V55.fstab
+    mount_all /smarttab.fstab
 
 on post-fs-data
     # We chown/chmod /persist again so because mount is run as root + defaults

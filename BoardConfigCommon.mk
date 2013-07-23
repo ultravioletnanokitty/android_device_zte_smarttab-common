@@ -51,10 +51,10 @@ TARGET_HAS_S3D_SUPPORT := true
 WEBCORE_INPAGE_VIDEO := true
 TARGET_HAVE_TSLIB := false
 
-# Camera (Broken anyway, so commented)
-#COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
-#BOARD_NEEDS_MEMORYHEAPPMEM := true
-#USE_CAMERA_STUB := false
+# Camera
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
+BOARD_NEEDS_MEMORYHEAPPMEM := true
+USE_CAMERA_STUB := false
 
 # Graphics
 BOARD_EGL_CFG := device/zte/smarttab-common/config/egl.cfg

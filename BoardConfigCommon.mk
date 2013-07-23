@@ -57,7 +57,7 @@ TARGET_HAVE_TSLIB := false
 #USE_CAMERA_STUB := false
 
 # Graphics
-BOARD_EGL_CFG := device/zte/V55/config/egl.cfg
+BOARD_EGL_CFG := device/zte/smarttab-common/config/egl.cfg
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 TARGET_USE_SCORPION_PLD_SET := true
 TARGET_SCORPION_BIONIC_PLDOFFS := 6
@@ -84,7 +84,6 @@ BOARD_USES_QCOM_GPS := true
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := V55
     
 # Audio
 BOARD_USES_QCOM_LPA := true
@@ -161,15 +160,14 @@ BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
 
 # Recovery (TWRP)
 
-#TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/V55/recovery/kernel
 TARGET_PROVIDES_RECOVERY_INIT_RC := true
-TARGET_RECOVERY_INITRC := device/zte/V55/recovery/init.rc
+TARGET_RECOVERY_INITRC := device/zte/smarttab-common/recovery/init.rc
 TARGET_RECOVERY_GUI := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 DEVICE_RESOLUTION := 1280x800
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_CUSTOM_GRAPHICS := ../../../device/zte/V55/recovery/minui/graphics.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/zte/smarttab-common/recovery/minui/graphics.c
 TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/sdcard-ext"

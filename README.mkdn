@@ -18,6 +18,6 @@ Sync and build as usual:
 	repo sync
 	. build/envsetup.sh
 	vendor/cm/get-prebuilts
-	brunch <device>
+	brunch device
 
-Wherein <device> is V55, V71A, or V11A
+Wherein device is V55, V71A, or V11A

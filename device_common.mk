@@ -47,6 +47,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8660
 
+# Camera
+PRODUCT_PACKAGES += \
+    camera.default
+
 # HDMI
 PRODUCT_PACKAGES += \
     hdmid

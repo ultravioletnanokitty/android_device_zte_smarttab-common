@@ -14,8 +14,8 @@ PRODUCT_AAPT_CONFIG := hdpi xhdpi
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libaudioutils \
-    audio_policy.msm8660 \
-    audio.primary.msm8660 \
+    audio_policy.smarttab \
+    audio.primary.smarttab \
     audio_policy.conf
 
 # Graphics

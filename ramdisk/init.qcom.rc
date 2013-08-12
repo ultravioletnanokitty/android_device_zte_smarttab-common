@@ -131,7 +131,7 @@ service iprenew_eth0 /system/bin/dhcpcd -n
     disabled
     oneshot 
 
-service wiperiface /system/bin/wiperiface
+service wiperiface /system/bin/logwrapper /system/bin/wiperiface
     user location
     group qcom_oncrpc system
     oneshot

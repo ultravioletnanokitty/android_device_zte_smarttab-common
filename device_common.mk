@@ -26,13 +26,13 @@ PRODUCT_PACKAGES += \
     libgenlock \
     libmemalloc \
     liboverlay \
-    libQcomUI \
+    libqdutils \
     libtilerenderer
 
 # OMX
 PRODUCT_PACKAGES += \
     libdivxdrmdecrypt \
-    libI420colorconvert \
+    libc2dcolorconvert \
     libmm-omxcore \
     libOmxCore \
     libOmxVdec \

@@ -28,6 +28,7 @@ TARGET_NO_HW_VSYNC := true
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_USES_GENLOCK := true
 BOARD_EGL_CFG := device/zte/smarttab-common/config/egl.cfg
+BOARD_EGL_NEEDS_LEGACY_FB := true
 
 # Compile Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp

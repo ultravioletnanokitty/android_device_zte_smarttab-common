@@ -7,8 +7,10 @@
 # Overlay
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
-# DPI
+# Product info
 PRODUCT_AAPT_CONFIG := hdpi xhdpi
+PRODUCT_CHARACTERISTICS := tablet
+PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Audio
 PRODUCT_PACKAGES += \

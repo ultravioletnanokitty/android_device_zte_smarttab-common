@@ -1,12 +1,16 @@
 import /init.${ro.hardware}.usb.rc
-    
-on early-init    
+
+on init
+    # Set permissions for persist partition
+    mkdir /persist 0771 system system
+
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage 0550 system sdcard_r
     mkdir /storage/emulated 0555 root root
 
     # External storage directories
     mkdir /storage/sdcard1 0000 system system
+    mkdir /storage/usbdisk0 0000 system system
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
     export SECONDARY_STORAGE /storage/sdcard1
@@ -20,17 +24,13 @@ on early-init
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
     symlink /storage/sdcard1 /sdcard-ext
     symlink /storage/sdcard1 /mnt/sdcard-ext
-    
-on init
-    loglevel 8
-   
-    # create /persist
-    mkdir /persist 0771 system system 
+    symlink /storage/usbdisk0 /usbdisk0
+    symlink /storage/usbdisk0 /mnt/usbdisk0
 
 on fs
     # mount mmc partitions
     mount_all /smarttab.fstab
-
+    
 on post-fs-data
     # We chown/chmod /persist again so because mount is run as root + defaults
     chown system system /persist
@@ -104,6 +104,8 @@ on boot
     # set up wifi
     symlink /persist/qcom_wlan_nv.bin /etc/firmware/wlan/qcom_wlan_nv.bin
     symlink /data/hostapd/qcom_cfg.ini /etc/firmware/wlan/qcom_cfg.ini
+    #insmod /system/lib/modules/dhd.ko firmware_path=/system/etc/wifi/bcm4330_b2.bin nvram_path=/persist/zte/wifi/bcm.txt
+    setprop wifi.interface eth0
     
     # create location services directories
     mkdir /data/wpstiles/ 0755 shell
@@ -113,11 +115,11 @@ on boot
     mkdir /data/misc/audio 0770 audio audio
     mkdir /data/audio/ 2770 media audio
     
-service hciattach /system/bin/brcm_patchram_plus --enable_lpm --enable_hci --baudrate 921600 --patchram /etc/firmware/bcm4330.hcd /dev/ttyHS0 any &
+service hciattach /system/bin/brcm_patchram_plus --enable_lpm --enable_hci --baudrate 921600 --patchram /etc/firmware/bcm.hcd /dev/ttyHS0 any &
+    class main
     user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin system
+    group bluetooth net_bt_admin
     disabled
-    oneshot
     
 service wpa_supplicant /system/bin/wpa_supplicant -D wext -i eth0 -c /data/misc/wifi/wpa_supplicant.conf 
     user root
@@ -136,7 +138,7 @@ service iprenew_eth0 /system/bin/dhcpcd -n
     disabled
     oneshot 
 
-service wiperiface /system/bin/wiperiface
+service wiperiface /system/bin/logwrapper /system/bin/wiperiface
     user location
     group qcom_oncrpc system
     oneshot
@@ -161,8 +163,6 @@ on property:init.svc.bootanim=stopped
 	echo 1 > /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/idle_enabled
 	chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 	chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-	echo "smartassV2" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-	echo 384000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 	# cpu1
 	chown root.system /sys/devices/system/cpu/cpu1/online
 	chmod 664 /sys/devices/system/cpu/cpu1/online
@@ -172,8 +172,6 @@ on property:init.svc.bootanim=stopped
 	echo 1 > /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/idle_enabled
 	chown system /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
 	chown system /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
-	echo "smartassV2" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
-	echo 384000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
 	# mfreq
 	chown root.system /sys/devices/system/cpu/mfreq
 	chmod 220 /sys/devices/system/cpu/mfreq

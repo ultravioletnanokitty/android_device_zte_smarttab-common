@@ -7,18 +7,19 @@
 # Overlay
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
-# Product info
-PRODUCT_AAPT_CONFIG := hdpi xhdpi
-PRODUCT_CHARACTERISTICS := tablet
+# Product Tags
 PRODUCT_TAGS += dalvik.gc.type-precise
+
+# DPI
+PRODUCT_AAPT_CONFIG := hdpi xhdpi
 
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    libaudioutils \
     audio_policy.msm8660 \
     audio.primary.msm8660 \
-    audio_policy.conf
+    audio_policy.conf \
+    libaudioutils
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -33,25 +34,22 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
-    libdivxdrmdecrypt \
     libc2dcolorconvert \
+    libdivxdrmdecrypt \
     libmm-omxcore \
     libOmxCore \
     libOmxVdec \
     libOmxVenc \
     libOmxAacEnc \
     libOmxAmrEnc \
-    libOmxEvrcEnc \
+    libstagefrighthw \
     libOmxQcelp13Enc \
-    libstagefrighthw 
+    libOmxEvrcEnc \
+    libOmxAmrEnc
 
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8660
-
-# Camera
-PRODUCT_PACKAGES += \
-    camera.default
 
 # HDMI
 PRODUCT_PACKAGES += \
@@ -82,9 +80,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
-# input
+# Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/input/matrix-keypad.kl:system/usr/keylayout/matrix-keypad.kl \
     $(LOCAL_PATH)/input/pmic8058_pwrkey.kl:system/usr/keylayout/pmic8058_pwrkey.kl \
@@ -98,7 +96,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/thermald.conf:system/etc/thermald.conf \
     $(LOCAL_PATH)/config/egl.cfg:system/lib/egl/egl.cfg
 
-# ramdisk
+# Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/initlogo.rle:root/initlogo.rle \
     $(LOCAL_PATH)/ramdisk/ueventd.qcom.rc:root/ueventd.qcom.rc \
@@ -106,7 +104,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc \
     $(LOCAL_PATH)/ramdisk/smarttab.fstab:root/smarttab.fstab
 	
-# fstab files
+# Fstab Files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/recovery.fstab 
@@ -119,6 +117,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     $(LOCAL_PATH)/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
     $(LOCAL_PATH)/firmware/bcm4330.hcd:system/etc/firmware/bcm4330.hcd \
+    $(LOCAL_PATH)/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
     $(LOCAL_PATH)/firmware/dsps_fluid.b00:system/etc/firmware/dsps_fluid.b00 \
     $(LOCAL_PATH)/firmware/dsps_fluid.b01:system/etc/firmware/dsps_fluid.b01 \
     $(LOCAL_PATH)/firmware/dsps_fluid.b02:system/etc/firmware/dsps_fluid.b02 \
@@ -129,5 +128,5 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
     $(LOCAL_PATH)/firmware/apsta_bcm4330_b2.bin:system/etc/wifi/apsta_bcm4330_b2.bin \
     $(LOCAL_PATH)/firmware/bcm4330_b2.bin:system/etc/wifi/bcm4330_b2.bin
-
+    
 $(call inherit-product-if-exists, vendor/zte/smarttab/smarttab-vendor-blobs.mk)

@@ -1,0 +1,31 @@
+wifi.interface=eth0
+wifi.supplicant_scan_interval=90
+ro.bt.bdaddr_path=/persist/zte/bt/bt_addr.txt
+wifi.chip.type=BCM4330
+
+qemu.hw.mainkeys=0
+persist.sys.usbcharger.enable=1
+
+# graphics
+com.qc.hardware=true
+debug.composition.type=gpu
+debug.enabletr=true
+debug.sf.hw=1
+ro.opengles.version=131072
+ro.sf.lcd_density=213
+#
+# Power Saving/Sleep
+#
+pm.sleep_mode=1
+#
+# Disable-kernel-error-report
+#
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+#
+# Scrolling-Tweaks
+#
+windowsmgr.max_events_per_sec=150
+ro.max.fling_velocity=12000
+ro.min.fling_velocity=8000
+view.scroll_friction=0

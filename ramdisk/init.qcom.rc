@@ -27,7 +27,7 @@ on init
     symlink /storage/usbdisk0 /usbdisk0
     symlink /storage/usbdisk0 /mnt/usbdisk0
 
-on fs
+on emmc-fs
     # mount mmc partitions
     mount_all /smarttab.fstab
     

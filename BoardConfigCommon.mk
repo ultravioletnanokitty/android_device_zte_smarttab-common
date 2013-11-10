@@ -8,6 +8,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/zte/smarttab-common/include
 
 # Bootloader
 TARGET_NO_BOOTLOADER := true
+BOARD_WANTS_EMMC_BOOT := true
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8660
@@ -19,6 +20,7 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
+TARGET_CPU_VARIANT := cortex-a9
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 

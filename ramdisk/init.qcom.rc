@@ -135,10 +135,24 @@ service wiperiface /system/bin/wiperiface
     user location
     group qcom_oncrpc system
     oneshot
-    
+
 service sdcard /system/bin/sdcard /data/media 1023 1023
     class late_start
-    
+
+service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11
+    class core
+    user root
+
+service qmuxd /system/bin/qmuxd
+    class main
+    user radio
+    group radio audio bluetooth gps
+
+service hdmid /system/bin/hdmid
+    class main
+    socket hdmid stream 0660 root system graphics
+    disabled
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd_eth0
     

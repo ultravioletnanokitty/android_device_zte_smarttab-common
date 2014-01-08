@@ -6,10 +6,7 @@
   <project path="device/zte/V11A" name="ultravioletnanokitty/android_device_zte_V11A" remote="github" revision="4.2" />
 
   <project path="vendor/zte/smarttab" name="ultravioletnanokitty/android_vendor_zte_smarttab" remote="github" revision="master" />
-
-  <project path="kernel/zte/V55" name="ultravioletnanokitty/android_kernel_zte_smarttab" remote="github" revision="master" />
-  <project path="kernel/zte/V71A" name="ultravioletnanokitty/android_kernel_zte_smarttab" remote="github" revision="master" />
-  <project path="kernel/zte/V11A" name="ultravioletnanokitty/android_kernel_zte_smarttab" remote="github" revision="master" />
+  <project path="kernel/zte/smarttab" name="ultravioletnanokitty/android_kernel_zte_smarttab" remote="github" revision="master" />
 
   <remove-project name="CyanogenMod/android_hardware_libhardware_legacy" />
   <project path="hardware/libhardware_legacy" name="Team-Hydra/android_hardware_libhardware_legacy" />

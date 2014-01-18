@@ -81,8 +81,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
 # input
 PRODUCT_COPY_FILES += \
@@ -90,7 +89,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/input/pmic8058_pwrkey.kl:system/usr/keylayout/pmic8058_pwrkey.kl \
     $(LOCAL_PATH)/input/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
     $(LOCAL_PATH)/input/icudt44l.dat:system/usr/icu/icudt44l.dat
-	
+
 # Config Files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/media_codecs.xml:system/etc/media_codecs.xml \
@@ -105,13 +104,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.qcom.rc:root/init.qcom.rc \
     $(LOCAL_PATH)/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc \
     $(LOCAL_PATH)/ramdisk/smarttab.fstab:root/smarttab.fstab
-	
+
 # fstab files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/recovery.fstab 
-    
-# Firmware	
+
+# Firmware
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw \
     $(LOCAL_PATH)/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw \

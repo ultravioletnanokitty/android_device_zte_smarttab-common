@@ -4,33 +4,25 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
+    # Create external storage directories
     mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage 0550 system sdcard_r
     mkdir /storage/emulated 0555 root root
 
-    # External storage directories
-    mkdir /storage/sdcard1 0000 system system
-    mkdir /storage/usbdisk0 0000 system system
+    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /storage/sdcard1 0700 root root
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
-    export SECONDARY_STORAGE /storage/sdcard1
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
-
-    # for backwards compatibility
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-    symlink /storage/sdcard1 /sdcard-ext
-    symlink /storage/sdcard1 /mnt/sdcard-ext
-    symlink /storage/usbdisk0 /usbdisk0
-    symlink /storage/usbdisk0 /mnt/usbdisk0
+    export SECONDARY_STORAGE /storage/sdcard1
 
 on emmc-fs
-    # mount mmc partitions
-    mount_all /smarttab.fstab
+    # mount partitions
+    mount_all /fstab.smarttab
     
+    # We do indeed have a physical sd card
+    setprop ro.crypto.fuse_sdcard true
+
 on post-fs-data
     # We chown/chmod /persist again so because mount is run as root + defaults
     chown system system /persist
@@ -45,22 +37,14 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.2/polling
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
-
-    mkdir /data/media 0777 media_rw media_rw
     
     # set permissions for invensense mpu
     chmod 0777 /dev/taos
-	chmod 0777 /dev/mpu
-	chmod 0777 /dev/mpuirq
-	chmod 0777 /dev/accelirq
+    chmod 0777 /dev/mpu
+    chmod 0777 /dev/mpuirq
+    chmod 0777 /dev/accelirq
     chmod 0777 /dev/timerirq
-    
-    # workaround for sdcard service
-    class_start late_start
-    
-    # for encrypted filesystems
-    setprop vold.post_fs_data_done 1
-    
+
     # set bluetooth mac address
     setprop ro.bt.bdaddr_path "/persist/zte/bt/bt_addr.txt"	
     setprop bt.bcm_bdaddr_path "/persist/zte/bt/bt_addr.txt"	
@@ -73,18 +57,21 @@ on post-fs-data
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    
+
+    # for encrypted filesystems
+    setprop vold.post_fs_data_done 1
+
 on boot
     # create wifi/bluetooth directories
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
-    
+
     # set bluetooth mac address
     setprop ro.bt.bdaddr_path "/persist/zte/bt/bt_addr.txt"	
     setprop bt.bcm_bdaddr_path "/persist/zte/bt/bt_addr.txt"	
-    
+
     # permissions for bluetooth.
     chown bluetooth bluetooth /persist/zte/bt
     chown bluetooth bluetooth ro.bt.bdaddr_path
@@ -106,21 +93,21 @@ on boot
     symlink /data/hostapd/qcom_cfg.ini /etc/firmware/wlan/qcom_cfg.ini
     #insmod /system/lib/modules/dhd.ko firmware_path=/system/etc/wifi/bcm4330_b2.bin nvram_path=/persist/zte/wifi/bcm.txt
     setprop wifi.interface eth0
-    
+
     # create location services directories
     mkdir /data/wpstiles/ 0755 shell
     mkdir /data/wiper 0755 gps qcom_oncrpc
-    
+
     # create audio directories
     mkdir /data/misc/audio 0770 audio audio
     mkdir /data/audio/ 2770 media audio
-    
+
 service hciattach /system/bin/brcm_patchram_plus --enable_lpm --enable_hci --baudrate 921600 --patchram /etc/firmware/bcm.hcd /dev/ttyHS0 any &
     class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
-    
+
 service wpa_supplicant /system/bin/wpa_supplicant -D wext -i eth0 -c /data/misc/wifi/wpa_supplicant.conf 
     user root
     group wifi inet
@@ -157,12 +144,16 @@ service hdmid /system/bin/hdmid
     socket hdmid stream 0660 root system graphics
     disabled
 
-service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
-    
+
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd_eth0
-    
+
 on property:init.svc.bootanim=stopped
     # currently just a huge blob to hopefully fix issues with mpdecision and thermald
 	echo 1 > /sys/module/rpm_resources/enable_low_power/L2_cache

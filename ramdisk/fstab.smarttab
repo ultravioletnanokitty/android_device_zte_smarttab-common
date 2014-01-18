@@ -1,0 +1,15 @@
+# Android fstab file.
+# <src>										<mnt_point>	<type>	<mnt_flags>											<fs_mgr_flags>
+
+/dev/block/mmcblk0p1						/modem		vfat	defaults											defaults
+/dev/block/mmcblk0p7						/aboot		emmc	defaults											defaults
+/dev/block/mmcblk0p8						/boot		emmc	defaults											defaults
+/dev/block/mmcblk0p15						/misc		emmc	defaults											defaults
+/dev/block/mmcblk0p18						/recovery	emmc	defaults											defaults
+/dev/block/mmcblk0p12						/system		ext4	ro,data=ordered,noauto_da_alloc						wait
+/dev/block/mmcblk0p13						/persist	ext4	noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait
+/dev/block/mmcblk0p14						/cache		ext4	noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait
+/dev/block/mmcblk0p21						/data		ext4	noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait
+
+# SD Card
+/devices/platform/msm_sdcc.3/mmc_host/mmc1	auto		auto	defaults											voldmanaged=sdcard1:auto

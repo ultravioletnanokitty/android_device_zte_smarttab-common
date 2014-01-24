@@ -51,10 +51,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8660
 
-# HDMI
-PRODUCT_PACKAGES += \
-    hdmid
-
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory

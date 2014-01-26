@@ -36,16 +36,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libdivxdrmdecrypt \
+    libstagefrighthw \
     libmm-omxcore \
     libOmxCore \
     libOmxVdec \
     libOmxVenc \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libstagefrighthw \
-    libOmxQcelp13Enc \
-    libOmxEvrcEnc \
-    libOmxAmrEnc
 
 # Lights
 PRODUCT_PACKAGES += \

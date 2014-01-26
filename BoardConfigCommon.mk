@@ -44,7 +44,6 @@ TARGET_SCORPION_BIONIC_PLDSIZE := 128
 # Media
 TARGET_PREBUILT_HEADERS := true
 TARGET_QCOM_MEDIA_VARIANT := legacy
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # Audio
 TARGET_PROVIDES_LIBAUDIO := true
@@ -163,12 +162,12 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_CUSTOM_GRAPHICS := ../../../device/zte/smarttab-common/recovery/minui/graphics.c
 TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/storage/sdcard1"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard1"
+TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TW_FLASH_FROM_STORAGE := true 
 TW_DEFAULT_EXTERNAL_STORAGE := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_NO_USB_STORAGE := true
-BOARD_HAS_NO_REAL_SDCARD := true
+HAVE_SELINUX := true
 
 TARGET_EXTRA_CFLAGS += $(call cc-option,-mtune=cortex-a9,$(call cc-option,-mtune=cortex-a8)) $(call cc-option,-mcpu=cortex-a9,$(call cc-option,-mcpu=cortex-a8))

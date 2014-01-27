@@ -38,9 +38,6 @@ PRODUCT_PACKAGES += \
     libdivxdrmdecrypt \
     libstagefrighthw \
     libmm-omxcore \
-    libOmxCore \
-    libOmxVdec \
-    libOmxVenc \
 
 # Lights
 PRODUCT_PACKAGES += \

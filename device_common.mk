@@ -37,7 +37,7 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libdivxdrmdecrypt \
     libstagefrighthw \
-    libmm-omxcore \
+    libmm-omxcore
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -87,9 +87,9 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/initlogo.rle:root/initlogo.rle \
-    $(LOCAL_PATH)/ramdisk/ueventd.qcom.rc:root/ueventd.qcom.rc \
-    $(LOCAL_PATH)/ramdisk/init.qcom.rc:root/init.qcom.rc \
-    $(LOCAL_PATH)/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc \
+    $(LOCAL_PATH)/ramdisk/ueventd.smarttab.rc:root/ueventd.smarttab.rc \
+    $(LOCAL_PATH)/ramdisk/init.smarttab.rc:root/init.smarttab.rc \
+    $(LOCAL_PATH)/ramdisk/init.smarttab.usb.rc:root/init.smarttab.usb.rc \
     $(LOCAL_PATH)/ramdisk/fstab.smarttab:root/fstab.smarttab
 
 # Firmware

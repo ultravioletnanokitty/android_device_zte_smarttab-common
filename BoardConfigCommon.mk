@@ -132,7 +132,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_NO_MISC_PARTITION := true
 
 # Kernel Config
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom vmalloc=512M kgsl.ptcount=14
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=smarttab vmalloc=512M kgsl.ptcount=14
 BOARD_KERNEL_BASE := 0x40200000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3

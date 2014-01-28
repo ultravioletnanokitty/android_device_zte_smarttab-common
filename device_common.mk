@@ -92,6 +92,7 @@ PRODUCT_COPY_FILES += \
 
 # Config Files
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/config/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
     $(LOCAL_PATH)/config/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/config/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/config/thermald.conf:system/etc/thermald.conf \
@@ -103,7 +104,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/ueventd.qcom.rc:root/ueventd.qcom.rc \
     $(LOCAL_PATH)/ramdisk/init.qcom.rc:root/init.qcom.rc \
     $(LOCAL_PATH)/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc \
-    $(LOCAL_PATH)/ramdisk/smarttab.fstab:root/smarttab.fstab
+    $(LOCAL_PATH)/ramdisk/fstab.smarttab:root/fstab.smarttab
 
 # fstab files
 PRODUCT_COPY_FILES += \

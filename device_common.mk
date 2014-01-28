@@ -79,6 +79,7 @@ PRODUCT_COPY_FILES += \
 
 # Config Files
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/config/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
     $(LOCAL_PATH)/config/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/config/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/config/thermald.conf:system/etc/thermald.conf \

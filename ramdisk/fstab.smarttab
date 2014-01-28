@@ -1,7 +1,7 @@
 # Android fstab file.
 # <src>										<mnt_point>	<type>	<mnt_flags>											<fs_mgr_flags>
 
-/dev/block/mmcblk0p1						/modem		emmc	defaults											defaults
+/dev/block/mmcblk0p1						/firmware	vfat	ro,shortname=lower									wait
 /dev/block/mmcblk0p7						/aboot		emmc	defaults											defaults
 /dev/block/mmcblk0p8						/boot		emmc	defaults											defaults
 /dev/block/mmcblk0p15						/misc		emmc	defaults											defaults

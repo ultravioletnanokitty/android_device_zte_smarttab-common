@@ -28,9 +28,16 @@ on init
     symlink /storage/usbdisk0 /mnt/usbdisk0
 
 on emmc-fs
+    # create non-standard mountpoints
+    mkdir /persist 0771 system system
+    mkdir /firmware 0771 system system
+
     # mount mmc partitions
-    mount_all /smarttab.fstab
-    
+    mount_all /fstab.smarttab
+
+    # run modem script
+    exec /system/bin/sh /system/etc/init.qcom.modem_links.sh
+
 on post-fs-data
     # We chown/chmod /persist again so because mount is run as root + defaults
     chown system system /persist

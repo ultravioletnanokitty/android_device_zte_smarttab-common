@@ -74,27 +74,22 @@ BOARD_HAVE_QCOM_FM := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
 
 # Wi-Fi
+PRODUCT_WIRELESS_TOOLS := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-#BOARD_HOSTAPD_DRIVER := WEXT
-#BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+CONFIG_DRIVER_WEXT := true
+BOARD_WEXT_NO_COMBO_SCAN := true
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE := bcmdhd
 BOARD_WLAN_DEVICE_REV := bcm4330_b2
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+WIFI_BAND := 802_11_ABGN
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_MODULE_NAME := "dhd"
 WIFI_AP_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
 WIFI_AP_DRIVER_MODULE_NAME := "dhd"
 WIFI_DRIVER_FW_PATH_STA := "/system/etc/wifi/bcm4330_b2.bin"
-#WIFI_DRIVER_FW_PATH_P2P := "/system/etc/wifi/bcm4330_p2p_b2.bin"
-#WIFI_DRIVER_FW_PATH_AP := "/system/etc/wifi/fw_bcm4330_apsta_b2.bin"
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wifi/bcm4330_b2.bin nvram_path=/persist/zte/wifi/bcm.txt"
-#WIFI_AP_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wifi/fw_bcm4330_apsta_b2.bin nvram_path=/persist/zte/wifi/bcm.txt"
-CONFIG_DRIVER_WEXT := true
-WIFI_BAND := 802_11_ABGN
-BOARD_WEXT_NO_COMBO_SCAN := true
 BOARD_NETWORK_INTERFACES_DIR := "/sys/devices/virtual/net"
-PRODUCT_WIRELESS_TOOLS := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -116,20 +111,16 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_NO_MISC_PARTITION := true
 
 # Kernel Config
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom vmalloc=512M kgsl.ptcount=14
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=smarttab vmalloc=512M kgsl.ptcount=14
 BOARD_KERNEL_BASE := 0x40200000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 TARGET_KERNEL_SOURCE := kernel/zte/smarttab
 
-# SD Card		
+# SD Card
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p1
 BOARD_USES_MMCUTILS := true
-
-# Insecure Boot
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += persist.service.adb.enable=1
 
 # Vold/UMS Stuff
 BOARD_VOLD_MAX_PARTITIONS := 30
@@ -137,7 +128,6 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/
 BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
 
 # Recovery (TWRP)
-
 TARGET_PROVIDES_RECOVERY_INIT_RC := true
 TARGET_RECOVERY_INITRC := device/zte/smarttab-common/recovery/init.rc
 TARGET_RECOVERY_GUI := true
@@ -155,15 +145,3 @@ TW_DEFAULT_EXTERNAL_STORAGE := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_NO_USB_STORAGE := true
 BOARD_HAS_NO_REAL_SDCARD := true
-
-#SP1_NAME := "modem"
-#SP1_DISPLAY_NAME := "NON-HLOS (modem Firmware)"
-#SP1_BACKUP_METHOD := image
-#SP1_MOUNTABLE := 1
-#SP2_NAME := "persist"
-#SP2_BACKUP_METHOD := image
-#SP2_MOUNTABLE := 1
-#SP3_NAME := "aboot"
-#SP3_DISPLAY_NAME := "Appsboot"
-#SP3_BACKUP_METHOD := image
-#SP3_MOUNTABLE := 1

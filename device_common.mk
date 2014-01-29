@@ -49,6 +49,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8660
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8660
+
 # Camera
 PRODUCT_PACKAGES += \
     camera.default

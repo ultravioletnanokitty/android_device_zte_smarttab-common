@@ -105,9 +105,9 @@
         <item>0</item>
     </integer-array>
 
-    <!-- Component name of the default wallpaper. This will be ImageWallpaper if not 
-         specified -->
-    <!--<string name="default_wallpaper_component">com.android.phasebeam/.PhaseBeamWallpaper</string>-->
+    <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
+         autodetected from the Configuration. -->
+    <bool name="config_showNavigationBar">true</bool>
 
     <!-- Dock settings -->
     <integer name="config_deskDockKeepsScreenOn">1</integer>

@@ -12,4 +12,4 @@
 /dev/block/mmcblk0p21						/data		ext4	noatime,nosuid,nodev,data=ordered,noauto_da_alloc	wait
 
 # SD Card
-/devices/platform/msm_sdcc.3/mmc_host/mmc1	auto		auto	defaults											voldmanaged=sdcard1:auto
+/devices/platform/msm_sdcc.3/mmc_host		auto		auto	defaults											voldmanaged=sdcard1:auto
